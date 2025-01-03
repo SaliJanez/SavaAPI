@@ -1,0 +1,117 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\PC\\source\\repos\\SavaAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|c:\\users\\pc\\source\\repos\\savaapi\\savaapi\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|solutionrelative:savaapi\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|c:\\users\\pc\\source\\repos\\savaapi\\savaapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|solutionrelative:savaapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|c:\\users\\pc\\source\\repos\\savaapi\\savaapi\\savaapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|solutionrelative:savaapi\\savaapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|c:\\users\\pc\\source\\repos\\savaapi\\savaapi\\data\\tasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|solutionrelative:savaapi\\data\\tasks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|c:\\users\\pc\\source\\repos\\savaapi\\savaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|solutionrelative:savaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|c:\\users\\pc\\source\\repos\\savaapi\\savaapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D0DE3D86-A0E8-4F38-8FBF-7818F43CBDD9}|SavaAPI\\SavaAPI.csproj|solutionrelative:savaapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TasksController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Controllers\\TasksController.cs",
+              "RelativeDocumentMoniker": "SavaAPI\\Controllers\\TasksController.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Controllers\\TasksController.cs",
+              "RelativeToolTip": "SavaAPI\\Controllers\\TasksController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T11:47:47.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "SavaAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\appsettings.json",
+              "RelativeToolTip": "SavaAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-02T11:32:48.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Program.cs",
+              "RelativeDocumentMoniker": "SavaAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Program.cs",
+              "RelativeToolTip": "SavaAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T11:21:03.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "SavaAPI\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "SavaAPI\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T11:11:48.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Tasks.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Data\\Tasks.cs",
+              "RelativeDocumentMoniker": "SavaAPI\\Data\\Tasks.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\Data\\Tasks.cs",
+              "RelativeToolTip": "SavaAPI\\Data\\Tasks.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T11:10:44.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SavaAPI.csproj",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\SavaAPI.csproj",
+              "RelativeDocumentMoniker": "SavaAPI\\SavaAPI.csproj",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\SavaAPI\\SavaAPI\\SavaAPI.csproj",
+              "RelativeToolTip": "SavaAPI\\SavaAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-02T09:39:47.991Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
