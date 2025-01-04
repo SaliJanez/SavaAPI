@@ -47,18 +47,32 @@ namespace SavaAPI.Controllers
             return task;
         }
 
-        // PUT: api/Tasks/5
+        //// PUT: api/Tasks/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTask(Guid id, Tasks tasks)
         {
             if (id != tasks.Id)
             {
-                _logger.LogError("PUT request failed.Task with ID {TaskId} does not exist.Please verify the ID or ensure the task is created before updating.", id);
+                _logger.LogError("PUT request failed. Task with ID {TaskId} does not exist. Please verify the ID or ensure the task is created before updating.", id);
                 return BadRequest();
             }
 
-            tasks.UpdatedDate = DateTime.Now;
-            _context.Entry(tasks).State = EntityState.Modified;
+            // Retrieve the existing task from the database
+            var existingTask = await _context.Tasks.FindAsync(id);
+
+            if (existingTask == null)
+            {
+                _logger.LogError("Task with ID {TaskId} not found.", id);
+                return NotFound(); // Task not found
+            }
+
+            // Manually update the fields of the existing task
+            existingTask.Title = tasks.Title ?? existingTask.Title;
+            existingTask.Description = tasks.Description ?? existingTask.Description; 
+            existingTask.IsCompleted = tasks.IsCompleted; 
+            existingTask.DueDate = tasks.DueDate; 
+            existingTask.Priority = tasks.Priority; 
+            existingTask.UpdatedDate = DateTime.Now; 
 
             try
             {
@@ -79,8 +93,10 @@ namespace SavaAPI.Controllers
                 }
             }
 
+            _logger.LogInformation("PUT request for Task with ID {TaskId} completed successfully with NoContent response.", id);
             return NoContent();
         }
+
 
         // POST: api/Tasks
         [HttpPost]
