@@ -9,6 +9,6 @@
         public DateTime DueDate { get; set; }
         public int Priority { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }
