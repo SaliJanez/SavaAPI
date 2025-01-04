@@ -99,27 +99,6 @@ namespace SavaAPI_Test
             Assert.NotNull(createdTask);
             Assert.Equal("New Task", createdTask.Title);
         }
-
-        //[Fact]
-        //public async Task DeleteTask_WithValidId_ReturnsNoContent()
-        //{
-        //    // Arrange
-        //    using var context = new AppDbContext(_options);
-        //    var task = new Tasks { Id = Guid.NewGuid(), Title = "Task to Delete" };
-        //    context.Tasks.Add(task);
-        //    await context.SaveChangesAsync();
-
-        //    var controller = CreateController();
-
-        //    // Act
-        //    var result = await controller.DeleteTask(task.Id);
-
-        //    // Assert
-        //    Assert.IsType<NoContentResult>(result);
-
-        //    var deletedTask = await context.Tasks.FindAsync(task.Id);
-        //    Assert.Null(deletedTask);
-        //}
         [Fact]
         public async Task DeleteTask_WithValidId_ReturnsNoContent()
         {
@@ -167,42 +146,6 @@ namespace SavaAPI_Test
             Assert.IsType<NotFoundResult>(result);
         }
 
-        //[Fact]
-        //public async Task PutTask_WithValidData_ReturnsNoContent()
-        //{
-        //    // Arrange
-        //    using var context = new AppDbContext(_options);
-        //    var existingTask = new Tasks
-        //    {
-        //        Id = Guid.NewGuid(),
-        //        Title = "Existing Task",
-        //        IsCompleted = false,
-        //        CreatedDate = DateTime.Now
-        //    };
-        //    context.Tasks.Add(existingTask);
-        //    await context.SaveChangesAsync();
-
-        //    var controller = CreateController();
-
-        //    var updatedTask = new Tasks
-        //    {
-        //        Id = existingTask.Id,
-        //        Title = "Updated Task",
-        //        IsCompleted = true,
-        //        CreatedDate = existingTask.CreatedDate,
-        //        UpdatedDate = DateTime.Now
-        //    };
-
-        //    // Act
-        //    var result = await controller.PutTask(existingTask.Id, updatedTask);
-
-        //    // Assert
-        //    Assert.IsType<NoContentResult>(result);
-
-        //    var updatedEntity = await context.Tasks.FindAsync(existingTask.Id);
-        //    Assert.Equal("Updated Task", updatedEntity.Title);
-        //    Assert.True(updatedEntity.IsCompleted);
-        //}
 
         [Fact]
         public async Task PutTask_WithValidData_ReturnsNoContent()
