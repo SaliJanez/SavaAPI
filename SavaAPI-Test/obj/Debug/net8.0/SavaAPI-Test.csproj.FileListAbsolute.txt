@@ -314,3 +314,11 @@ C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\obj\Debug\net8.0\refint\SavaAPI-Te
 C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\obj\Debug\net8.0\SavaAPI-Test.pdb
 C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\obj\Debug\net8.0\SavaAPI-Test.genruntimeconfig.cache
 C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\obj\Debug\net8.0\ref\SavaAPI-Test.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\SavaAPI.Application.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\SavaAPI.Domain.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\SavaAPI.Infrastructure.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\SavaAPI.Application.pdb
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\SavaAPI.Domain.pdb
+C:\Users\PC\source\repos\SavaAPI\SavaAPI-Test\bin\Debug\net8.0\SavaAPI.Infrastructure.pdb
