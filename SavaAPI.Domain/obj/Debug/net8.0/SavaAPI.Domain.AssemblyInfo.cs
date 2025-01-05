@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SavaAPI.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+139f6d58c3885142b2fb9645a9a95eed75f918d0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb75caed3d657a174d5db77568e45936aaeebfbf")]
 [assembly: System.Reflection.AssemblyProductAttribute("SavaAPI.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SavaAPI.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
