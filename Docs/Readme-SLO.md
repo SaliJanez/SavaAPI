@@ -15,7 +15,7 @@ SavaAPI je preprost API, ki omogoča upravljanje zahtevkov s pomočjo osnovnih C
 ## Začetek uporabe:
 1. Klonirajte repozitorij.
 2. Odprite rešitev SavaAPI.sln s programom Visual Studio.
-3. Kot zagonski projekt naj bo nastavlje SavaAPI
+3. Kot zagonski projekt naj bo nastavljen SavaAPI.
 4. Zgradite in zaženite aplikacijo.
 
 ## Testiranje:
