@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using SavaAPI;
-using SavaAPI.Data;
 using SavaAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
