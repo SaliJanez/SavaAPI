@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SavaAPI;
 using SavaAPI.Data;
+using SavaAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseInMemoryDatabase(builder.Configuration.GetConnectionString("SavaDB"))
 );
+
+builder.Services.AddApiDI();
 
 var app = builder.Build();
 
