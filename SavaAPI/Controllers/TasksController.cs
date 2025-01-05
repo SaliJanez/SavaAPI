@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SavaAPI.Data;
+using SavaAPI.Application.Commands;
+using SavaAPI.Application.Queries;
+using SavaAPI.Domain.Entities;
 
 namespace SavaAPI.Controllers
 {
@@ -13,93 +10,86 @@ namespace SavaAPI.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ISender _sender;
+        private readonly ILogger<TasksController> _logger;
 
-        public TasksController(AppDbContext context)
+        public TasksController(ISender sender, ILogger<TasksController> logger)
         {
-            _context = context;
+            _sender = sender;
+            _logger = logger;
         }
 
-        // GET: api/Tasks
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tasks>>> GetTask()
+        [HttpPost("")]
+        public async Task<IActionResult> AddTaskAsync([FromBody] TasksEntity tasks)
         {
-            return await _context.Tasks.ToListAsync();
+            _logger.LogInformation("Received request to add a new task.");
+
+            var result = await _sender.Send(new AddTaskComannd(tasks));
+
+            _logger.LogInformation("Successfully added a new task with ID: {TaskId}.", result.Id);
+            return Ok(result);
         }
 
-        // GET: api/Tasks/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Tasks>> GetTask(Guid id)
+        [HttpGet("")]
+        public async Task<IActionResult> GetAllTasksAsync()
         {
-            var task = await _context.Tasks.FindAsync(id);
+            _logger.LogInformation("Received request to fetch all tasks.");
 
-            if (task == null)
+            var result = await _sender.Send(new GetAllTasksQuery());
+
+            _logger.LogInformation("Successfully retrieved {TaskCount} tasks.", result.Count());
+            return Ok(result);
+        }
+
+        [HttpGet("{taskID}")]
+        public async Task<IActionResult> GetTasksById([FromRoute] Guid taskID)
+        {
+            _logger.LogInformation("Received request to fetch task with ID: {TaskId}.", taskID);
+
+            var result = await _sender.Send(new GetTasksByIdQuery(taskID));
+
+            if (result == null)
             {
+                _logger.LogWarning("Task with ID: {TaskId} not found.", taskID);
                 return NotFound();
             }
 
-            return task;
+            _logger.LogInformation("Successfully retrieved task with ID: {TaskId}.", taskID);
+            return Ok(result);
         }
 
-        // PUT: api/Tasks/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTask(Guid id, Tasks tasks)
+        [HttpPut("{taskID}")]
+        public async Task<IActionResult> UpdateTaskAsync([FromRoute] Guid taskID, [FromBody] TasksEntity tasks)
         {
-            if (id != tasks.Id)
+            _logger.LogInformation("Received request to update task with ID: {TaskId}.", taskID);
+
+            var result = await _sender.Send(new UpdateTaskCommand(taskID, tasks));
+
+            if (result == null)
             {
-                return BadRequest();
-            }
-
-            _context.Entry(tasks).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TaskExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Tasks
-        [HttpPost]
-        public async Task<ActionResult<Tasks>> PostTask(Tasks tasks)
-        {
-            _context.Tasks.Add(tasks);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTask", new { id = tasks.Id }, tasks);
-        }
-
-        // DELETE: api/Tasks/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTask(Guid id)
-        {
-            var task = await _context.Tasks.FindAsync(id);
-            if (task == null)
-            {
+                _logger.LogWarning("Failed to update task with ID: {TaskId}. Task not found.", taskID);
                 return NotFound();
             }
 
-            _context.Tasks.Remove(task);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            _logger.LogInformation("Successfully updated task with ID: {TaskId}.", taskID);
+            return Ok(result);
         }
 
-        private bool TaskExists(Guid id)
+        [HttpDelete("{taskID}")]
+        public async Task<IActionResult> DeleteTaskAsync([FromRoute] Guid taskID)
         {
-            return _context.Tasks.Any(e => e.Id == id);
+            _logger.LogInformation("Received request to delete task with ID: {TaskId}.", taskID);
+
+            var result = await _sender.Send(new DeleteTaskCommand(taskID));
+
+            if (!result)
+            {
+                _logger.LogWarning("Failed to delete task with ID: {TaskId}. Task not found.", taskID);
+                return NotFound();
+            }
+
+            _logger.LogInformation("Successfully deleted task with ID: {TaskId}.", taskID);
+            return NoContent();
         }
     }
 }

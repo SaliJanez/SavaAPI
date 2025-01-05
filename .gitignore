@@ -1,0 +1,9 @@
+# Ignore Visual Studio specific files
+.vs/
+
+# Ignore build output directories
+SavaAPI/bin/
+SavaAPI/obj/
+
+SavaAPI-Test/bin/
+SavaAPI-Test/obj/

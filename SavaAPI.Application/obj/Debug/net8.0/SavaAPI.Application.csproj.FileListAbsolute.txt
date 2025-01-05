@@ -1,0 +1,16 @@
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\bin\Debug\net8.0\SavaAPI.Application.deps.json
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\bin\Debug\net8.0\SavaAPI.Application.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\bin\Debug\net8.0\SavaAPI.Application.pdb
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\bin\Debug\net8.0\SavaAPI.Domain.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\bin\Debug\net8.0\SavaAPI.Domain.pdb
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.csproj.AssemblyReference.cache
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.AssemblyInfoInputs.cache
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.AssemblyInfo.cs
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.csproj.CoreCompileInputs.cache
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.sourcelink.json
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI..D6C9BB64.Up2Date
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\refint\SavaAPI.Application.dll
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\SavaAPI.Application.pdb
+C:\Users\PC\source\repos\SavaAPI\SavaAPI.Application\obj\Debug\net8.0\ref\SavaAPI.Application.dll
