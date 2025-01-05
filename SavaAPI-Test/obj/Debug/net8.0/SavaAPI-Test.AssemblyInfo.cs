@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SavaAPI-Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6ba224cb75223533656ee49f3a649dec8baa402")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+605bec832ee896723b46e196d9e2e4ee58b2dbe9")]
 [assembly: System.Reflection.AssemblyProductAttribute("SavaAPI-Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SavaAPI-Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
