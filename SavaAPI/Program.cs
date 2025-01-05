@@ -12,9 +12,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseInMemoryDatabase(builder.Configuration.GetConnectionString("SavaDB"))
-);
 
 builder.Services.AddApiDI();
 

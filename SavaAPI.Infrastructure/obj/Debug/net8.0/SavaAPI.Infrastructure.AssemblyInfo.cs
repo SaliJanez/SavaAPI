@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SavaAPI.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e3b42f85113fc46c9c9f5ca9efdf86ed907a63a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+139f6d58c3885142b2fb9645a9a95eed75f918d0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SavaAPI.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SavaAPI.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

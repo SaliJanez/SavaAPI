@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SavaAPI.Infrastructure.Data;
+using SavaAPI.Domain.Interfaces;
+using SavaAPI.Infrastructure.Repositories;
 
 namespace SavaAPI.Infrastructure
 {
@@ -18,7 +20,11 @@ namespace SavaAPI.Infrastructure
                 options.UseInMemoryDatabase("SavaDB");
  
             });
+
+
+            services.AddScoped<ITasksRepository, TasksRepository>();
+
             return services;
-        }
+        }  
     }
 }

@@ -7,8 +7,9 @@ namespace SavaAPI
     {
         public static IServiceCollection AddApiDI(this IServiceCollection services)
         {
-            services.AddAplicationDI();
-            services.AddAInfrastructureDI();
+            services.AddAplicationDI()
+               .AddAInfrastructureDI();
+
             return services;
         }
     }
