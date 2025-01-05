@@ -1,213 +1,105 @@
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
-//using Microsoft.Extensions.Logging;
-//using SavaAPI.Controllers;
-//using SavaAPI.Data;
-//using Xunit;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Moq;
+using SavaAPI.Application.Commands;
+using SavaAPI.Domain.Entities;
+using SavaAPI.Domain.Interfaces;
+using Microsoft.Extensions.Logging;
+using Xunit;
 
+namespace SavaAPI.Tests
+{
+   
 
-//namespace SavaAPI_Test
-//{
-//    public class TasksControllerTests
-//    {
-//        private readonly DbContextOptions<AppDbContext> _options;
-//        private readonly ILogger<TasksController> _logger;
+    // Tests for ITasksRepository (mocked CRUD operations)
 
-//        public TasksControllerTests()
-//        {
-//            // Configure the in-memory database
-//            _options = new DbContextOptionsBuilder<AppDbContext>()
-//                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
-//                .Options;
+    public class TasksRepositoryTests
+    {
+        private readonly Mock<ITasksRepository> _tasksRepositoryMock;
 
-//            _logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<TasksController>();
-//        }
+        public TasksRepositoryTests()
+        {
+            _tasksRepositoryMock = new Mock<ITasksRepository>();
+        }
 
-//        private TasksController CreateController()
-//        {
-//            var context = new AppDbContext(_options);
-//            return new TasksController(context, _logger);
-//        }
+        [Fact]
+        public async Task GetTasks_ReturnsTaskList()
+        {
+            // Arrange
+            var taskList = new List<TasksEntity>
+            {
+                new TasksEntity { Id = Guid.NewGuid(), Title = "Task 1", Description = "Description 1", IsCompleted = false, DueDate = DateTime.Now.AddDays(1), Priority = 1, CreatedDate = DateTime.Now },
+                new TasksEntity { Id = Guid.NewGuid(), Title = "Task 2", Description = "Description 2", IsCompleted = true, DueDate = DateTime.Now.AddDays(2), Priority = 2, CreatedDate = DateTime.Now }
+            };
 
-//        [Fact]
-//        public async Task GetTask_ReturnsAllTasks()
-//        {
-//            // Arrange
-//            using var context = new AppDbContext(_options);
-//            context.Tasks.AddRange(new List<Tasks>
-//            {
-//                new Tasks { Id = Guid.NewGuid(), Title = "Task 1", IsCompleted = false },
-//                new Tasks { Id = Guid.NewGuid(), Title = "Task 2", IsCompleted = true }
-//            });
-//            await context.SaveChangesAsync();
+            _tasksRepositoryMock.Setup(repo => repo.GetTasks())
+                                .ReturnsAsync(taskList);
 
-//            var controller = CreateController();
+            // Act
+            var tasks = await _tasksRepositoryMock.Object.GetTasks();
 
-//            // Act
-//            var result = await controller.GetTask();
+            // Assert
+            Assert.Equal(2, tasks.Count());
+            Assert.Equal("Task 1", tasks.First().Title);
+            Assert.Equal("Task 2", tasks.Last().Title);
+        }
 
-//            // Assert
-//            var actionResult = Assert.IsType<ActionResult<IEnumerable<Tasks>>>(result);
-//            var tasks = Assert.IsAssignableFrom<List<Tasks>>(actionResult.Value);
-//            Assert.Equal(2, tasks.Count);
-//        }
+        [Fact]
+        public async Task AddTaskAsync_ReturnsNewTask()
+        {
+            // Arrange
+            var newTask = new TasksEntity
+            {
+                Id = Guid.NewGuid(),
+                Title = "New Task",
+                Description = "New task description",
+                IsCompleted = false,
+                DueDate = DateTime.Now.AddDays(5),
+                Priority = 3,
+                CreatedDate = DateTime.Now
+            };
 
-//        [Fact]
-//        public async Task GetTask_WithInvalidId_ReturnsNotFound()
-//        {
-//            // Arrange
-//            var invalidId = Guid.NewGuid();
-//            var controller = CreateController();
+            _tasksRepositoryMock.Setup(repo => repo.AddTaskAsync(It.IsAny<TasksEntity>()))
+                                .ReturnsAsync(newTask);
 
-//            // Act
-//            var result = await controller.GetTask(invalidId);
+            // Act
+            var result = await _tasksRepositoryMock.Object.AddTaskAsync(newTask);
 
-//            // Assert
-//            Assert.IsType<NotFoundResult>(result.Result);
-//        }
+            // Assert
+            Assert.Equal("New Task", result.Title);
+            Assert.Equal("New task description", result.Description);
+        }
 
-//        [Fact]
-//        public async Task PostTask_CreatesNewTask_ReturnsCreatedAtAction()
-//        {
-//            // Arrange
-//            using var context = new AppDbContext(_options);
-//            var controller = CreateController();
+        [Fact]
+        public async Task DeleteTaskAsync_ReturnsTrue()
+        {
+            // Arrange
+            var taskId = Guid.NewGuid();
+            _tasksRepositoryMock.Setup(repo => repo.DeleteTaskAsync(taskId))
+                                .ReturnsAsync(true);
 
-//            var newTask = new Tasks
-//            {
-//                Id = Guid.NewGuid(),
-//                Title = "New Task",
-//                Description = "Task Description",
-//                IsCompleted = false,
-//                DueDate = DateTime.Now.AddDays(1),
-//                Priority = 1
-//            };
+            // Act
+            var result = await _tasksRepositoryMock.Object.DeleteTaskAsync(taskId);
 
-//            // Act
-//            var result = await controller.PostTask(newTask);
+            // Assert
+            Assert.True(result);
+        }
 
-//            // Assert
-//            var createdResult = Assert.IsType<CreatedAtActionResult>(result.Result);
-//            Assert.Equal("GetTask", createdResult.ActionName);
-//            Assert.Equal(newTask.Id, createdResult.RouteValues["id"]);
+        [Fact]
+        public async Task DeleteTaskAsync_Fails_ReturnsFalse()
+        {
+            // Arrange
+            var taskId = Guid.NewGuid();
+            _tasksRepositoryMock.Setup(repo => repo.DeleteTaskAsync(taskId))
+                                .ReturnsAsync(false);
 
-//            var createdTask = await context.Tasks.FindAsync(newTask.Id);
-//            Assert.NotNull(createdTask);
-//            Assert.Equal("New Task", createdTask.Title);
-//        }
-//        [Fact]
-//        public async Task DeleteTask_WithValidId_ReturnsNoContent()
-//        {
-//            // Arrange
-//            var options = new DbContextOptionsBuilder<AppDbContext>()
-//                .UseInMemoryDatabase(databaseName: "TestDatabase")
-//                .Options;
+            // Act
+            var result = await _tasksRepositoryMock.Object.DeleteTaskAsync(taskId);
 
-//            // Use the same context to add the task and to perform the delete operation
-//            using (var context = new AppDbContext(options))
-//            {
-//                // Add the task
-//                var task = new Tasks { Id = Guid.NewGuid(), Title = "Task to Delete" };
-//                context.Tasks.Add(task);
-//                await context.SaveChangesAsync();
-
-//                // Create the controller with the same context
-//                var logger = new LoggerFactory().CreateLogger<TasksController>();
-//                var controller = new TasksController(context, logger);
-
-//                // Act
-//                var result = await controller.DeleteTask(task.Id);
-
-//                // Assert
-//                Assert.IsType<NoContentResult>(result);
-
-//                // Verify the task is deleted
-//                var deletedTask = await context.Tasks.FindAsync(task.Id);
-//                Assert.Null(deletedTask);
-//            }
-//        }
-
-
-//        [Fact]
-//        public async Task DeleteTask_WithInvalidId_ReturnsNotFound()
-//        {
-//            // Arrange
-//            var invalidId = Guid.NewGuid();
-//            var controller = CreateController();
-
-//            // Act
-//            var result = await controller.DeleteTask(invalidId);
-
-//            // Assert
-//            Assert.IsType<NotFoundResult>(result);
-//        }
-
-
-//        [Fact]
-//        public async Task PutTask_WithValidData_ReturnsNoContent()
-//        {
-//            // Arrange
-//            var options = new DbContextOptionsBuilder<AppDbContext>()
-//                .UseInMemoryDatabase(databaseName: "TestDatabase_PutTask")
-//                .Options;
-
-//            // Add the existing task to the shared in-memory database
-//            using (var context = new AppDbContext(options))
-//            {
-//                var existingTask = new Tasks
-//                {
-//                    Id = Guid.NewGuid(),
-//                    Title = "Existing Task",
-//                    IsCompleted = false,
-//                    CreatedDate = DateTime.Now
-//                };
-//                context.Tasks.Add(existingTask);
-//                await context.SaveChangesAsync();
-
-//                // Create the controller with the same context
-//                var logger = new LoggerFactory().CreateLogger<TasksController>();
-//                var controller = new TasksController(context, logger);
-
-//                // Prepare the updated task
-//                var updatedTask = new Tasks
-//                {
-//                    Id = existingTask.Id,
-//                    Title = "Updated Task",
-//                    IsCompleted = true,
-//                    CreatedDate = existingTask.CreatedDate,
-//                    UpdatedDate = DateTime.Now
-//                };
-
-//                // Act
-//                var result = await controller.PutTask(existingTask.Id, updatedTask);
-
-//                // Assert the result type
-//                Assert.IsType<NoContentResult>(result);
-
-//                // Verify the task was updated in the database
-//                var updatedEntity = await context.Tasks.FindAsync(existingTask.Id);
-//                Assert.Equal("Updated Task", updatedEntity.Title);
-//                Assert.True(updatedEntity.IsCompleted);
-//            }
-//        }
-
-//        [Fact]
-//        public async Task PutTask_WithInvalidId_ReturnsBadRequest()
-//        {
-//            // Arrange
-//            var invalidId = Guid.NewGuid();
-//            var taskToUpdate = new Tasks { Id = Guid.NewGuid(), Title = "Task" };
-//            var controller = CreateController();
-
-//            // Act
-//            var result = await controller.PutTask(invalidId, taskToUpdate);
-
-//            // Assert
-//            Assert.IsType<BadRequestResult>(result);
-//        }
-//    }
-//}
+            // Assert
+            Assert.False(result);
+        }
+    }
+}
